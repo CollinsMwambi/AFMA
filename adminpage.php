@@ -5,3 +5,7 @@ session_start();
     header("location:login.php");
 }
 ?>
+<html>
+    <head>
+</head>
+    </html>
