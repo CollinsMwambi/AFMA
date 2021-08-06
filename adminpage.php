@@ -44,7 +44,7 @@ session_start();
               <a href="#" class="nav-link"><i class="fas fa-shopping-basket"></i></i> Orders </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link"><i class="fas fa-user-cog"></i> Admins </a>
+              <a href="afmaadmin.php" class="nav-link"><i class="fas fa-user-cog"></i> Admins </a>
             </li>
 
             </li>

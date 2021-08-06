@@ -22,7 +22,7 @@ require_once("db-con.php");
 </nav>
 <?php
 
-$query="SELECT * FROM `users` WHERE usertype='user'; ";
+$query="SELECT * FROM `users` WHERE usertype='admin'; ";
 $mysqli_result= mysqli_query($conn, $query);
 
 ?>
@@ -60,7 +60,6 @@ $mysqli_result= mysqli_query($conn, $query);
 
     
       <td><button type="button" class="btn btn-info">Edit</button></td>
-      <td><button type="button" class="btn btn-warning">Make admin</button></td>
      <td><button type="button" class="btn btn-danger">Delete</button></td>
 
     </tr>
