@@ -1,6 +1,9 @@
 <?php
 session_start();
 require_once("db-con.php");
+if(!isset($_SESSION["loggedin"]) ){
+    header("location:login.php");
+}
     
 
 ?>
@@ -60,7 +63,7 @@ $mysqli_result= mysqli_query($conn, $query);
 
     
       <td><button type="button" class="btn btn-info">Edit</button></td>
-      <td><button type="button" class="btn btn-warning">Make admin</button></td>
+      <td><button type="button" class="btn btn-warning" value="makeadmin">Make admin</button></td>
      <td><button type="button" class="btn btn-danger">Delete</button></td>
 
     </tr>

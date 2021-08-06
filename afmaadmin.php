@@ -1,7 +1,9 @@
 <?php
 session_start();
 require_once("db-con.php");
-    
+if(!isset($_SESSION["loggedin"]) ){
+    header("location:login.php");
+}   
 
 ?>
 <html>
@@ -13,10 +15,13 @@ require_once("db-con.php");
 <body>
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <div class="container-fluid">
-    <a class="navbar-brand">AFMA users</a>
+    <a class="navbar-brand">AFMA admins</a>
     <form class="d-flex">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
+     
+     
+     
     </form>
   </div>
 </nav>
