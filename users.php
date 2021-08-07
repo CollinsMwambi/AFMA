@@ -37,8 +37,9 @@ $mysqli_result= mysqli_query($conn, $query);
   <th scope="col">Lastname</th>
       <th scope="col">Email</th>
       <th scope="col">Username</th>
-      <th scope="col">Created at</th>
-   
+      <th scope="col">Usertype</th>
+     
+     
 
 
     </tr>
@@ -59,12 +60,19 @@ $mysqli_result= mysqli_query($conn, $query);
       <td><?php echo $row['LName'] ?></td>
       <td><?php echo $row['Email'] ?></td>
       <td><?php echo $row['username'] ?></td>
-      <td><?php echo $row['created_at'] ?></td>
+      <td><?php echo $row['usertype'] ?></td>
+
+      
 
     
-      <td><button type="button" class="btn btn-info">Edit</button></td>
-      <td><button type="button" class="btn btn-warning" value="makeadmin">Make admin</button></td>
-     <td><button type="button" class="btn btn-danger">Delete</button></td>
+     <td>
+         <form action="updaterecords.php" method="post">
+<input type="hidden" name="update_id" value=" <?php echo $row['id']; ?>">
+      <button type="submit" name="update_button" class="btn btn-warning" >Update</button>
+      </form>  
+    </td>
+
+     <td><button type="submit" class="btn btn-danger">Delete</button></td>
 
     </tr>
     <?php

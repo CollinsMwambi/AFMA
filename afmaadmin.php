@@ -39,7 +39,7 @@ $mysqli_result= mysqli_query($conn, $query);
   <th scope="col">Lastname</th>
       <th scope="col">Email</th>
       <th scope="col">Username</th>
-      <th scope="col">Created at</th>
+   
    
 
 
@@ -61,7 +61,7 @@ $mysqli_result= mysqli_query($conn, $query);
       <td><?php echo $row['LName'] ?></td>
       <td><?php echo $row['Email'] ?></td>
       <td><?php echo $row['username'] ?></td>
-      <td><?php echo $row['created_at'] ?></td>
+   
 
     
       <td><button type="button" class="btn btn-info">Edit</button></td>
