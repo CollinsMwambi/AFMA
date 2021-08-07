@@ -24,24 +24,53 @@ method="post"
 
 style="width:450px; ">
 <h1 class="text-center p-3">Login</h1>
+<?php
+$fullUrl="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+if(strpos($fullUrl,"login=empty")==true){
+echo"<p style=background-color:red;>Fill in all fields!!<p>";
 
+}
+
+elseif(strpos($fullUrl,"login=wrong_user")==true){
+  echo"<p style=background-color:red;>Username does not exist!!<p>";
+
+  }
+  elseif(strpos($fullUrl,"login=wrong_pwd")==true){
+    echo"<p style=background-color:red;>You have entered the wrong password!!<p>";
+ 
+    }
+
+    elseif(strpos($fullUrl,"login=error")==true){
+      echo"<p style=background-color:orange;>Error logging in,Please try again!!<p>";
+   
+      }
+
+  
+
+
+
+
+?>
   
   <div class="mb-3">
     <label for="Username"
      class="form-label">Username</label>
     <input type="Username"
      class="form-control"
-     name="username"
+     name="username" 
+     
      >
-    
+     
+  
   </div>
   <div class="mb-3">
     <label for="Password"
      class="form-label">Password</label>
     <input type="Password"
      class="form-control"
-     name="user_pwd"
+     name="user_pwd" 
      >
+     
     
   </div>
 
@@ -49,7 +78,11 @@ style="width:450px; ">
   
   <button type="submit" name="lsubmit" class="btn btn-primary">Login</button>
   <a href="Registration.php" style="text-decoration:none; ">  New here? Sign up</a>
+<div>
+  <a href="fp.php" style="text-decoration:none;">  forgot password?</a></div>
+ 
 </form>
+
 
 </div>
 

@@ -66,7 +66,7 @@ $mysqli_result= mysqli_query($conn, $query);
 
     
      <td>
-         <form action="updaterecords.php" method="post">
+         <form action="" method="post">
 <input type="hidden" name="update_id" value=" <?php echo $row['id']; ?>">
       <button type="submit" name="update_button" class="btn btn-warning" >Update</button>
       </form>  

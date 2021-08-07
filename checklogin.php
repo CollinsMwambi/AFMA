@@ -6,18 +6,22 @@
     if (isset($_POST['lsubmit'])) {
          $user_alias =  $_POST['username'];
         $user_pwd = $_POST['user_pwd'];
+ 
         
             if (empty($user_alias) || empty(($user_pwd))) {
+              
                     header("Location:login.php?login=empty");
+                    
                         exit();
             } else {
-                    $login_query = "SELECT * FROM users WHERE username = '$user_alias'";
-                    $login_success = mysqli_query($conn, $login_query); 
-                        if(mysqli_num_rows($login_success) < 1) {
+                    $query = "SELECT * FROM users WHERE username = '$user_alias'";
+                    $mysqli_result = mysqli_query($conn, $query); 
+                        if(mysqli_num_rows($mysqli_result) < 1) {
                              header("Location: login.php?login=wrong_user");
+                            
                                 exit();
                         } else {
-                             $row = mysqli_fetch_assoc($login_success);
+                             $row = mysqli_fetch_assoc($mysqli_result);
                              
                              $hashed_pwd_check = password_verify($user_pwd, $row['password']);
                              if ($hashed_pwd_check === false) {

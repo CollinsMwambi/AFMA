@@ -48,13 +48,11 @@ if(!isset($_SESSION["loggedin"]) ){
             </li>
             <li class="nav-item">
               <a href="afmaadmin.php" class="nav-link"><i class="fas fa-user-cog"></i> Admins </a>
-            </li>
+              
 
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout </a>
-            </li>
-
+              <div class="d-grid gap-2">
+  <button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Logout</button>
+</div>
             
           </ul>
           </div>      
@@ -65,11 +63,30 @@ if(!isset($_SESSION["loggedin"]) ){
 
 </div>
 </main>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Logout Confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to logout??</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+        <form action="adminlogout.php" method="post"><button type="submit" class="btn btn-outline-danger">Logout</button></form>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
   </div>
 
 
 </body>
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </html>
