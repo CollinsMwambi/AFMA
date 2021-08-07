@@ -4,7 +4,7 @@ require_once("db-con.php");
 if(!isset($_SESSION["loggedin"]) ){
     header("location:login.php");
 }
-    
+  
 
 ?>
 <html>
@@ -66,10 +66,12 @@ $mysqli_result= mysqli_query($conn, $query);
 
     
      <td>
-         <form action="" method="post">
-<input type="hidden" name="update_id" value=" <?php echo $row['id']; ?>">
-      <button type="submit" name="update_button" class="btn btn-warning" >Update</button>
-      </form>  
+    
+     <input type="hidden" name="update_id" value=" <?php echo $row['id']; ?>">
+     
+     <div class="d-grid gap-2"><button class="btn btn-warning" type="submit"  name="" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button>
+</div></form>
+
     </td>
 
      <td><button type="submit" class="btn btn-danger">Delete</button></td>
@@ -84,8 +86,85 @@ else{
 ?>
     
   </tbody>
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">User Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      
+      <div class="mb-3">
+    <label for="FName"
+     class="form-label">First Name</label>
+    <input type="text"
+     class="form-control"
+     name="efname"  value="<?php echo $row['FName'] ?>"
+      >
+    
+  </div>
+
+  <div class="mb-3">
+    <label for="LName"
+     class="form-label">Last Name</label>
+    <input type="text"
+     class="form-control"
+     name="eLName" value=" <?php echo $row['LName'] ?>"
+   >
+    
+  </div>
+
+  <div class="mb-3">
+    <label for="Email"
+     class="form-label">Email</label>
+    <input type="text"
+    name="eEmail"value="<?php echo $row['Email'] ?>"
+     class="form-control"
+     >
+    
+  </div>
+
+  <div class="mb-3">
+    <label for="Username"
+     class="form-label">Username</label>
+    <input type="text"
+    name="eusername" value="<?php echo $row['username'] ?> "
+     class="form-control"
+     >
+    
+  </div>
+
+  <div class="mb-3">
+    <label for="usertype"
+     class="form-label">Usertype</label>
+    <input type="text"
+    name="eusertype"  value=" <?php echo $row['usertype'] ?>"
+     class="form-control"
+     >
+    
+  </div>
+
+
+
+      
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+       <button type="submit" class="btn btn-outline-warning" name="ubtn">Update</button></form>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  
 
 
 </table>
+
+
 </body>
 </html>

@@ -1,14 +1,11 @@
 <?php
 
         session_start();
-        if(!isset($_SESSION["loggedin"]) ){
-            header("location:login.php");
-        }
-        ?>
+        
+
+?>
 
 
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -35,8 +32,8 @@
                 <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <a class="btn btn-link ml-2" href="welcome.php">Cancel</a>
+                <input type="submit" class="btn btn-primary" value="Submit" name="forgotp">
+                <a class="btn btn-link ml-2" href="login.php">Cancel</a>
             </div>
         </form>
     </div>    

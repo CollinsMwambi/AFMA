@@ -73,7 +73,7 @@ elseif(strpos($fullUrl,"login=wrong_user")==true){
   <button type="submit" name="lsubmit" class="btn btn-primary">Login</button>
   <a href="Registration.php" style="text-decoration:none; ">  New here? Sign up</a>
 <div>
-  <a href="fp.php" style="text-decoration:none;">  forgot password?</a></div>
+  <a href="reset-password.php" style="text-decoration:none;">  forgot password?</a></div>
  
 </form>
 
