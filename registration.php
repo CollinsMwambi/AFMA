@@ -24,7 +24,38 @@ style= "min-height:100vh; ">
 style="width:450px; ">
 <h1 class="text-center p-3"
 >Registration</h1>
+<?php
+$fullUrl="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+if(strpos($fullUrl,"signup=empty_fields")==true){
+echo"<p style=background-color:red;>Fill in all fields!!<p>";
 
+}
+
+elseif(strpos($fullUrl,"login=wrong_user")==true){
+  echo"<p style=background-color:red;>Username does not exist!!<p>";
+
+  }
+  elseif(strpos($fullUrl,"signup=invalidnames")==true){
+    echo"<p style=background-color:red;>Invalid First Name and Last Name(only alphabets required)!!<p>";
+ 
+    }
+
+    elseif(strpos($fullUrl,"error=passwords_dont_match")==true){
+      echo"<p style=background-color:red;>Passwords don't match!!<p>";
+   
+      }
+      elseif(strpos($fullUrl,"signup=invalid_email")==true){
+        echo"<p style=background-color:red;>Invalid Email!!<p>";
+         }
+
+
+         elseif(strpos($fullUrl,"signup=user_taken")==true){
+          echo"<p style=background-color:red;>Username is taken!!<p>";
+       
+          }
+         
+        
+  ?>
   
   <div class="mb-3">
     <label for="FName"

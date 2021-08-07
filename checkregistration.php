@@ -16,7 +16,7 @@ session_start();
                     header("Location:registration.php?signup=empty_fields");
                         exit();
             } else if (!preg_match("/^[a-zA-Z]*$/", $FName) || !preg_match("/^[a-zA-Z]*$/", $LName) ) {
-                    header("Location:registration.php?signup=invalidFirstname_and_Lastname(only alphabets required)");
+                    header("Location:registration.php?signup=invalidnames");
                         exit();
 
                     } elseif ($user_pwd!= $CPassword) {

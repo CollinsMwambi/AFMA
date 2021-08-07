@@ -44,12 +44,6 @@ elseif(strpos($fullUrl,"login=wrong_user")==true){
       echo"<p style=background-color:orange;>Error logging in,Please try again!!<p>";
    
       }
-
-  
-
-
-
-
 ?>
   
   <div class="mb-3">
