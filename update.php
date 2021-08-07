@@ -28,7 +28,7 @@ session_start();
         header("Location:adminpage.php?Data is updated");
 }
     else{
-        header("Location:updaterecords.php?Data is not updated");
+        header("Location:users.php?Data is not updated");
 
     }
     }
