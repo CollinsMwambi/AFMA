@@ -31,8 +31,8 @@ echo"<p style=background-color:red;>Fill in all fields!!<p>";
 
 }
 
-elseif(strpos($fullUrl,"login=wrong_user")==true){
-  echo"<p style=background-color:red;>Username does not exist!!<p>";
+elseif(strpos($fullUrl,"login=wrong_email")==true){
+  echo"<p style=background-color:red;>user does not exist!!<p>";
 
   }
   elseif(strpos($fullUrl,"login=wrong_pwd")==true){
@@ -47,11 +47,11 @@ elseif(strpos($fullUrl,"login=wrong_user")==true){
 ?>
   
   <div class="mb-3">
-    <label for="Username"
-     class="form-label">Username</label>
-    <input type="Username"
+    <label for="Email"
+     class="form-label">Email</label>
+    <input type="email"
      class="form-control"
-     name="username" 
+     name="email" 
      
      >
      

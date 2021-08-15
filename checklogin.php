@@ -4,20 +4,20 @@
         require_once("db-con.php");
        
     if (isset($_POST['lsubmit'])) {
-         $user_alias =  $_POST['username'];
+         $user_email =  $_POST['email'];
         $user_pwd = $_POST['user_pwd'];
  
         
-            if (empty($user_alias) || empty(($user_pwd))) {
+            if (empty($user_email) || empty(($user_pwd))) {
               
                     header("Location:login.php?login=empty");
                     
                         exit();
             } else {
-                    $query = "SELECT * FROM users WHERE username = '$user_alias'";
+                    $query = "SELECT * FROM users WHERE Email = '$user_email'";
                     $mysqli_result = mysqli_query($conn, $query); 
                         if(mysqli_num_rows($mysqli_result) < 1) {
-                             header("Location: login.php?login=wrong_user");
+                             header("Location: login.php?login=wrong_email");
                             
                                 exit();
                         } else {
@@ -31,6 +31,7 @@
                                   $_SESSION["loggedin"] = true;
                                   $_SESSION["id"] = $id;
                                  $_SESSION['username'] = $row['username'];
+                                 $_SESSION['email'] = $row['Email'];
 
                                     header("Location:welcomef.php?login=login_successful");
                                     exit();
@@ -40,7 +41,7 @@
                                 $_SESSION['loggedin']= true;
                                 $_SESSION['id']= $id;
                                 $_SESSION['username']= $row['username'];
-
+                                $_SESSION['email'] = $row['Email'];
                                 header("Location:adminpage.php?login=adminlogin_successful");
                                 exit();
 

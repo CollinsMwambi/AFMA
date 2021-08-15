@@ -35,7 +35,8 @@ session_start();
                                 exit();   
                         } else {
                              $hashed_pwd = password_hash($CPassword, PASSWORD_DEFAULT);
-                            $register_user = "INSERT INTO users(FName,LName,Email,username,password) ";
+                           
+                             $register_user = "INSERT INTO users(FName,LName,Email,username, password) ";
                              $register_user .="VALUES('$FName','$LName','$Email','$username','$hashed_pwd')";
                                     if (mysqli_query($conn, $register_user) === true) {
                                             header("Location:login.php?signup_was_successful");

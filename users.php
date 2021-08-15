@@ -3,6 +3,9 @@ session_start();
 require_once("db-con.php");
 if(!isset($_SESSION["loggedin"]) ){
     header("location:login.php");
+
+    
+    
 }
   
 
@@ -25,11 +28,13 @@ if(!isset($_SESSION["loggedin"]) ){
 </nav>
 <?php
 
-$query="SELECT * FROM `users` WHERE usertype='user'; ";
+$query="SELECT * FROM `users` WHERE usertype='user'";
 $mysqli_result= mysqli_query($conn, $query);
 
 ?>
-<table class="table table-dark table-borderless">
+
+<table class="table table-dark table-borderless-responsive">
+<button type="submit" class="btn btn-outline-success " name="Add user">ADD USER</button>
   <thead>
     <tr>
       <th scope="col">Id</th>
@@ -46,16 +51,21 @@ $mysqli_result= mysqli_query($conn, $query);
   </thead>
   <tbody>
       <?php
-      if(mysqli_num_rows($mysqli_result)>0)
+
+      $sql="SELECT * FROM `users` WHERE usertype='user'";
+      $mysqli_result=mysqli_query($conn,$sql);
+      if($mysqli_result)
       {
           while($row=mysqli_fetch_assoc($mysqli_result))
       {
+            
+      }
+    }
         ?>
       
 
   <tr class="table-light">
       <th scope="row"><?php echo $row['id'] ?></th>
-      
       <td><?php echo $row['FName'] ?></td>
       <td><?php echo $row['LName'] ?></td>
       <td><?php echo $row['Email'] ?></td>
@@ -66,16 +76,18 @@ $mysqli_result= mysqli_query($conn, $query);
 
     
      <td>
-    
-     <input type="hidden" name="update_id" value=" <?php echo $row['id']; ?>">
+
+    <form action="updaterecords.php" method="post">
      
-     <div class="d-grid gap-2"><button class="btn btn-warning" type="submit"  name="" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button>
+    <input type="hidden" name='update_id' value="<?php echo $row['id']; ?>">
+     <div class="d-grid gap-2"><button class="btn btn-warning" type="submit"  value="<?php echo $row['id']; ?>"name="update_button" >Update</button>
 </div></form>
 
     </td>
 
-     <td><button type="submit" class="btn btn-danger">Delete</button></td>
-
+     <input type="hidden" name='update_id' value="<?php echo $row['id']; ?>">
+     <td><button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Modal3">Delete</button></td>
+      </form>
     </tr>
     <?php
 }
@@ -86,79 +98,30 @@ else{
 ?>
     
   </tbody>
-  
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="Modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">User Information</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      
-      <div class="mb-3">
-    <label for="FName"
-     class="form-label">First Name</label>
-    <input type="text"
-     class="form-control"
-     name="efname"  value="<?php echo $row['FName'] ?>"
-      >
-    
-  </div>
-
-  <div class="mb-3">
-    <label for="LName"
-     class="form-label">Last Name</label>
-    <input type="text"
-     class="form-control"
-     name="eLName" value=" <?php echo $row['LName'] ?>"
-   >
-    
-  </div>
-
-  <div class="mb-3">
-    <label for="Email"
-     class="form-label">Email</label>
-    <input type="text"
-    name="eEmail"value="<?php echo $row['Email'] ?>"
-     class="form-control"
-     >
-    
-  </div>
-
-  <div class="mb-3">
-    <label for="Username"
-     class="form-label">Username</label>
-    <input type="text"
-    name="eusername" value="<?php echo $row['username'] ?> "
-     class="form-control"
-     >
-    
-  </div>
-
-  <div class="mb-3">
-    <label for="usertype"
-     class="form-label">Usertype</label>
-    <input type="text"
-    name="eusertype"  value=" <?php echo $row['usertype'] ?>"
-     class="form-control"
-     >
-    
-  </div>
-
-
-
-      
-      </div>
+        <p> Are you sure you want to delete?</p>
+</div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-       <button type="submit" class="btn btn-outline-warning" name="ubtn">Update</button></form>
+      <button type="submit" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+       <button type="submit" class="btn btn-outline-danger" name="deleteuser">Delete</button></form>
       </div>
     </div>
   </div>
 </div>
     </div>
-  </div>
+
+
+
+
+  
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  
 
