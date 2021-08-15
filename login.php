@@ -44,6 +44,11 @@ elseif(strpos($fullUrl,"login=wrong_email")==true){
       echo"<p style=background-color:orange;>Error logging in,Please try again!!<p>";
    
       }
+
+      elseif(strpos($fullUrl,"New_record_created_successfully")==true){
+        echo"<p style=background-color:green;>Registration was successful, You can now log in<p>";
+     
+        }
 ?>
   
   <div class="mb-3">

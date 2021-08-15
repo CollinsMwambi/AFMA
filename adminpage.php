@@ -22,11 +22,20 @@ if(!isset($_SESSION["loggedin"]) ){
             
            <a class="navbar-brand mx-0 font-weight-bold  text-nowrap"> <i class="fas fa-user-shield"></i> <?php echo($_SESSION["username"]); ?></a>
           </div>
-              <button type="button" class="navbar-toggler border-0 order-1" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          <button
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#navbarNav"
+class="navbar-toggler"
+aria-controls="navbarNav"
+aria-expanded="false"
+aria-label="Toggle navigation"
+>
+    <span class="navbar-toggler-icon"></span>
+
+    </button>
           
-          <div class="collapse navbar-collapse order-last" id="nav">
+          <div class="collapse navbar-collapse order-last" id="navbarNav">
             <ul class="navbar-nav flex-column w-100 justify-content-center">
 
             <li class="nav-item">
@@ -34,7 +43,7 @@ if(!isset($_SESSION["loggedin"]) ){
             </li>
             
             <li class="nav-item">
-              <a href="#" class="nav-link "><i class="far fa-address-card"></i> My profile</a>
+              <a href="#" class="nav-link "><i class="far fa-address-card" ></i> My profile</a>
             </li>
             
             <li class="nav-item">
@@ -52,6 +61,7 @@ if(!isset($_SESSION["loggedin"]) ){
 
               <div class="d-grid gap-2">
   <button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Logout</button>
+</div>
 </div>
             
           </ul>
@@ -86,7 +96,9 @@ if(!isset($_SESSION["loggedin"]) ){
   </div>
 
 
-</body>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+</body>
 </html>

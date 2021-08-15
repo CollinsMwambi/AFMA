@@ -2,7 +2,7 @@
 $servername="localhost";
 $dBUsername="root";
 $dBPassword="";
-$dBName="afmadatabase";
+$dBName="adbc";
 
 $conn =mysqli_connect($servername,$dBUsername,$dBPassword,$dBName);
 

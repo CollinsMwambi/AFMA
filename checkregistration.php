@@ -36,14 +36,16 @@ session_start();
                         } else {
                              $hashed_pwd = password_hash($CPassword, PASSWORD_DEFAULT);
                            
-                             $register_user = "INSERT INTO users(FName,LName,Email,username, password) ";
-                             $register_user .="VALUES('$FName','$LName','$Email','$username','$hashed_pwd')";
-                                    if (mysqli_query($conn, $register_user) === true) {
-                                            header("Location:login.php?signup_was_successful");
-                                                exit();  
-                                    }
+                             $sql = "INSERT INTO users(FName,LName,Email,username,password) VALUES('$FName','$LName','$Email','$username','$hashed_pwd')";
+                             if ($conn->query($sql) === TRUE) {
+                                header("Location: login.php?New_record_created_successfully");
+                               
+                              } else {
+                                echo "Error: " . $sql . "<br>" . $conn->error;
+                              }
+                              
+                              $conn->close();
+                            }
                         }
-            }
-            
-    } 
-        ?>
+                    }
+                             ?>
