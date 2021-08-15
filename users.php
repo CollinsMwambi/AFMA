@@ -59,8 +59,8 @@ $mysqli_result= mysqli_query($conn, $query);
           while($row=mysqli_fetch_assoc($mysqli_result))
       {
             
-      }
-    }
+      
+    
         ?>
       
 
@@ -91,7 +91,8 @@ $mysqli_result= mysqli_query($conn, $query);
     </tr>
     <?php
 }
-        }
+}
+        
 else{
     echo"No record found";
 }
