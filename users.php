@@ -12,8 +12,14 @@ if(!isset($_SESSION["loggedin"]) ){
 ?>
 <html>
     <head>
+
+    <link href=" https://cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-        <title>AFMA users</title>
+        
+   
+   
+    <title>AFMA users</title>
       
 </head>
 <body>
@@ -23,14 +29,14 @@ if(!isset($_SESSION["loggedin"]) ){
     <form class="d-flex">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
-      <a href="adminpage.php" class="btn btn-outline-danger ">Go back</a>
+      <a href="adminpage.php" class="btn btn-dark ">Go back</a>
     </form>
   </div>
 </nav>
 
-
-<table class="table table-dark table-borderless-responsive">
 <button type="submit" class="btn btn-outline-success " name="Add user">ADD USER</button>
+<table id="usertable" class="table table-dark table-borderless-responsive">
+
 
 
   <thead>
@@ -41,6 +47,8 @@ if(!isset($_SESSION["loggedin"]) ){
       <th scope="col">Email</th>
       <th scope="col">Username</th>
       <th scope="col">Usertype</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
      
      
 
@@ -98,7 +106,9 @@ if(!isset($_SESSION["loggedin"]) ){
 ?>
     
   </tbody>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/dataTables.bootstrap5.min.js"></script>
 
       </div>
     </div>
@@ -106,17 +116,27 @@ if(!isset($_SESSION["loggedin"]) ){
 </div>
     </div>
 
-
-
-
-  
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  
-
+    
 
 </table>
 
 
+
+
+
+ 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/dataTables.bootstrap5.min.js"></script>
+<script> 
+$(document).ready(function() {
+
+    $('#usertable').DataTable();
+
+});
+</script>
 </body>
+
 </html>

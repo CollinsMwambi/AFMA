@@ -2,11 +2,19 @@
 session_start();
 	include("db-con.php");
     
-    
-		
-		$q= "SELECT * FROM products";
-		$query=mysqli_query($conn,$q);
-	
+    if (isset($_POST['btns']))
+    {
+      $productname=$_POST['productname'];
+      $q="SELECT * from products where productname='$productname'";
+      $query=mysqli_query($conn,$q);
+    } 
+	else 
+	{
+      $q= "SELECT * from products";
+      $query=mysqli_query($conn,$q);
+    }
+       
+        
 ?>
 
 <html>
@@ -30,25 +38,26 @@ session_start();
 			<div class="col-lg-8">
 				<h1>Products</h1>
 				<a  href="addproducts.php" class="btn btn-outline-success">Add Products</a>
+                <a  href="adminpage.php" class= "btn btn-dark">Go back</a>
 			</div>
-            
-			<div class="col-lg-4"> <a  href="adminpage.php" class= "btn btn-outline-dark">Go back</a>
+           
+			<div class="col-lg-4"> 
 				<div class="row">
 					<div class="col-lg-8">
-						
-						<!-- Date Filtering-->
-						<!-- <form method="post" action="">
-							<input type="date"
+                    
+						<!--  Filtering-->
+						 <form method="post" action="">
+							<input type="text"
 								class="form-control"
-								name="idate">
+								name="productname">
 						
 							<div class="col-lg-4"
-								method="post">
+								method="POST">
 								<input type="submit"
 								class="btn btn-danger float-right"
-								name="btn" value="filter">
+								name="btns" value="filter">
 							</div>
-						</form> -->
+						</form> 
 					</div>
 				</div>
 			</div>
