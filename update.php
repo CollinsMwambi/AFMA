@@ -1,28 +1,35 @@
 <?php
-require_once('db-con.php');
+    include("db-con.php");
+    if(isset($_POST['uptn']))
+    {
+        
 
-if (isset($_POST['ubtn'])){
-    $id = $_POST['id'];
-    $Fname = $_POST['fname'];
-    $Lname = $_POST['lname'];
-    $Email = $_POST['email'];
-    $Username = $_POST['username'];
-    $usertype = $_POST['usertype'];
- 
-    $sql="UPDATE 'users' SET FName='$Fname',LName=' $Lname',Email='$Email',username='$Username',usertype='$usertype' WHERE id='$id'" ;  
-    if ($conn->query($sql) === TRUE) {
-        echo'<script>alert("Account has been updated")<?script>';
-        echo'<script>window.location="users.php"</script>';
-    }else{
-        echo'<script>alert("Try again")</script>';
-        echo"something went wrong";
-    }
- } else{
-        echo"Invalid";
-    }
+        $FName=$_POST['FName'];
+        $LName=$_POST['LName'];
+        $Email=$_POST['Email'];
+        $username=$_POST['username'];
+        $usertype=$_POST['usertype'];
+        $id=$_POST['id'];
+    
+        $q= "UPDATE users set FName='$FName',LName='$LName',Email='$Email', username='$username', usertype='$usertype' where id=$id";
+        $query=mysqli_query($conn,$q);
+
+        if($query){
 
 
-
-
+            header('location:users.php?success');
+        }
+        else{
+            header('location:users.php?error');
+            echo $conn->error;
+        }
+    //     header('location:users.php');
+    // } 
+    // else if(isset($_GET['id'])) 
+    // {
+    //     $q = "SELECT * FROM users WHERE id='".$_GET['id']."'";
+    //     $query=mysqli_query($conn,$q);
+    //     $res= mysqli_fetch_array($query);
+     }
 
 ?>

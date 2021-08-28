@@ -23,18 +23,16 @@ if(!isset($_SESSION["loggedin"]) ){
     <form class="d-flex">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
+      <a href="adminpage.php" class="btn btn-outline-danger ">Go back</a>
     </form>
   </div>
 </nav>
-<?php
 
-$query="SELECT * FROM `users` WHERE usertype='user'";
-$mysqli_result= mysqli_query($conn, $query);
-
-?>
 
 <table class="table table-dark table-borderless-responsive">
 <button type="submit" class="btn btn-outline-success " name="Add user">ADD USER</button>
+
+
   <thead>
     <tr>
       <th scope="col">Id</th>
@@ -52,7 +50,7 @@ $mysqli_result= mysqli_query($conn, $query);
   <tbody>
       <?php
 
-      $sql="SELECT * FROM `users` WHERE usertype='user'";
+      $sql="SELECT * FROM users ";
       $mysqli_result=mysqli_query($conn,$sql);
       if($mysqli_result)
       {
@@ -85,8 +83,8 @@ $mysqli_result= mysqli_query($conn, $query);
 
     </td>
 
-     <input type="hidden" name='update_id' value="<?php echo $row['id']; ?>">
-     <td><button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Modal3">Delete</button></td>
+     
+     <td></form><button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Modal3">Delete</button></td>
       </form>
     </tr>
     <?php
@@ -111,7 +109,13 @@ else{
 </div>
       <div class="modal-footer">
       <button type="submit" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-       <button type="submit" class="btn btn-outline-danger" name="deleteuser">Delete</button></form>
+     
+      <form action="deleteuser.php" method="post">
+     
+    <input type="hidden" name='delete_id' value="<?php echo $row['id']; ?>">
+     <div class="d-grid gap-2"><button class="btn btn-danger" type="submit"  value="<?php echo $row['id']; ?>"name="delete_button" >Delete</button>
+</div></form>
+
       </div>
     </div>
   </div>

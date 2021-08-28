@@ -5,7 +5,7 @@ if(!isset($_SESSION["loggedin"]) ){
   header("location:login.php");
 }
 ?>
-<html>
+<html> 
 <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -43,21 +43,19 @@ aria-label="Toggle navigation"
             </li>
             
             <li class="nav-item">
-              <a href="#" class="nav-link "><i class="far fa-address-card" ></i> My profile</a>
+              <a href="adminprofile.php" class="nav-link "><i class="far fa-address-card" ></i> My profile</a>
             </li>
             
             <li class="nav-item">
               <a href="users.php" class="nav-link "><i class="far fa-user"></i> Users</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link"><i class="fas fa-prescription-bottle"></i> Products</a>
+              <a href="products.php" class="nav-link"><i class="fas fa-prescription-bottle"></i> Products</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link"><i class="fas fa-shopping-basket"></i></i> Orders </a>
             </li>
-            <li class="nav-item">
-              <a href="afmaadmin.php" class="nav-link"><i class="fas fa-user-cog"></i> Admins </a>
-              
+           
 
               <div class="d-grid gap-2">
   <button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Logout</button>

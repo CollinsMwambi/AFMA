@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('db-con.php');
-if (isset($_POST['update_button'])) {
+
     $id= $_POST['update_id'];
 
 
@@ -9,15 +9,16 @@ if (isset($_POST['update_button'])) {
      $query_run= mysqli_query($conn,$query);
      
      foreach($query_run as $row)
-{
+
 ?>
 
 
 <html>
     <head>
+    <link rel="stylesheet" type="text/css" href="update.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
-<body>
+<body style>
 
 <div class="container d-flex justify-content-center align-items-center"
 
@@ -25,33 +26,37 @@ if (isset($_POST['update_button'])) {
 style= "min-height:100vh; ">
 
 	
-<form class="border shadow p-3 rounded"
+<form action="update.php" method="POST" class="border shadow p-3 rounded"
 
 
 style="width:450px; ">
 <h1 class="text-center p-3"
 >Account Details</h1>
 
-<form>
+<form >
 
-
+<div class="mb-3">
+    <label for="userid" class="form-label"></label>
+    <input type="hidden" class="form-control" value=" <?php echo $row['id'] ?>" name="id" >
+    
+  </div>
  
 <div class="mb-3">
     <label for="Fname" class="form-label">First Name</label>
-    <input type="text" class="form-control" value="<?php echo $row['FName'] ?>" name="fname" >
+    <input type="text" class="form-control" value="<?php echo $row['FName'] ?>" name="FName"/>
     
   </div>
 
   <div class="mb-3">
     <label for="Lname" class="form-label">Last Name</label>
-    <input type="text" class="form-control" value=" <?php echo $row['LName'] ?>" name="lname" >
+    <input type="text" class="form-control" value=" <?php echo $row['LName'] ?>" name="LName" >
     
   </div>
   
   
   <div class="mb-3">
     <label for="Email" class="form-label">Email</label>
-    <input type="email" class="form-control" value="<?php echo $row['Email'] ?>" name="email" >
+    <input type="email" class="form-control" value="<?php echo $row['Email'] ?>" name="Email" >
     
   </div>
 
@@ -68,13 +73,13 @@ style="width:450px; ">
     
   </div>
   <?php
-}     
- }
+    
+ 
 ?>
 
 
 
-  <a href="update.php" class="btn btn-success " value="<?php echo $row['id'] ?>" name="ubtn">Update</button>
+  <button type="submit" class="btn btn-success " name="uptn" value="<?php echo $row['id'] ?>">Update</button>
   <a href="users.php" class="btn btn-danger ">Cancel</a>
 </form>
     <body>
