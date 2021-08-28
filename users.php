@@ -27,8 +27,7 @@ if(!isset($_SESSION["loggedin"]) ){
   <div class="container-fluid">
     <a class="navbar-brand">AFMA users</a>
     <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
+      
       <a href="adminpage.php" class="btn btn-dark ">Go back</a>
     </form>
   </div>
@@ -106,9 +105,7 @@ if(!isset($_SESSION["loggedin"]) ){
 ?>
     
   </tbody>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.0/js/dataTables.bootstrap5.min.js"></script>
+  
 
       </div>
     </div>

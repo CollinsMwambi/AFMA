@@ -1,116 +1,144 @@
 <?php
 session_start();
-	include("db-con.php");
+require_once("db-con.php");
+if(!isset($_SESSION["loggedin"]) ){
+    header("location:login.php");
+
     
-    if (isset($_POST['btns']))
-    {
-      $productname=$_POST['productname'];
-      $q="SELECT * from products where productname='$productname'";
-      $query=mysqli_query($conn,$q);
-    } 
-	else 
-	{
-      $q= "SELECT * from products";
-      $query=mysqli_query($conn,$q);
-    }
-       
-        
+    
+}
+  
+
 ?>
-
 <html>
+    <head>
 
-<head>
-	
-	<title>View List</title>
-
-	<link rel="stylesheet" href=
-"https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-
-	<link rel="stylesheet" href="showp.css">
+    <link href=" https://cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        
+   
+   
+    <title>AFMA users</title>
+      
 </head>
-
 <body>
-	<div class="container mt-5">
-		
-		<!-- top -->
-		<div class="row">
-			<div class="col-lg-8">
-				<h1>Products</h1>
-				<a  href="addproducts.php" class="btn btn-outline-success">Add Products</a>
-                <a  href="adminpage.php" class= "btn btn-dark">Go back</a>
-			</div>
-           
-			<div class="col-lg-4"> 
-				<div class="row">
-					<div class="col-lg-8">
-                    
-						<!--  Filtering-->
-						 <form method="post" action="">
-							<input type="text"
-								class="form-control"
-								name="productname">
-						
-							<div class="col-lg-4"
-								method="POST">
-								<input type="submit"
-								class="btn btn-danger float-right"
-								name="btns" value="filter">
-							</div>
-						</form> 
-					</div>
-				</div>
-			</div>
-		</div>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand">AFMA Products</a>
+    <form class="d-flex">
+      
+      <a href="adminpage.php" class="btn btn-dark ">Go back</a>
+    </form>
+  </div>
+</nav>
 
-		<!-- product Cards -->
-		<div class="row mt-4">
-			<?php
-            $result = mysqli_query($conn, "SELECT * FROM products");
-				while ($qq=$result->fetch_assoc())
-				{
-			?>
-
-			<div class="col-lg-4">
-				<div class="card">
-                <img src="imageuploads/<?=$qq['filename']?>" width="350" height="250">
-					<div class="card-body">
-                   
-						<h5 class="card-title">
-						<?php echo $qq['productname']; ?>
-						</h5>
-						<h6 class="card-subtitle mb-2 text-muted">Price(ksh)=
-							<?php echo
-							$qq['price']; ?>
-						</h6>
-                        <h6 class="card-subtitle mb-2 text-muted">Quantity  =
-							<?php echo
-							$qq['quantity']; ?>
-						</h6>
-
-					<h8>	
-						<a class="btn btn-danger" href=
-						"productdelete.php?id=<?php echo $qq['id']; ?>" onclick="return confirm('Are you sure?')"
-							class="card-link">
-							Delete
-						</a>
-						<a  class="btn btn-success" href=
-						"productupdate.php?id=<?php echo $qq['id']; ?>" 
-							class="card-link" >
-							Update
-						</a>
-                </h8>
-					</div>
-				</div><br>
-			</div>
-			<?php
-			}
-			?>
-		</div>
-	</div>
+<button type="submit" class="btn btn-outline-success " name="Add user">ADD USER</button>
+<table id="usertable" class="table table-dark table-borderless-responsive">
 
 
 
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+ <th scope="col">Product Name</th>
+  <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Image</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+     
+     
+
+
+    </tr>
+  </thead>
+  <tbody>
+      <?php
+
+      $sql="SELECT * FROM products ";
+      $mysqli_result=mysqli_query($conn,$sql);
+      if($mysqli_result)
+      {
+          while($row=mysqli_fetch_assoc($mysqli_result))
+      {
+            
+      
+    
+        ?>
+      
+
+  <tr class="table-light">
+      <th scope="row"><?php echo $row['id'] ?></th>
+      <td><?php echo $row['productname'] ?></td>
+      <td><?php echo $row['description'] ?></td>
+      <td><?php echo $row['price'] ?></td>
+      <td><?php echo $row['quantity'] ?></td>
+      <td><img src="imageuploads/<?=$row['filename']?>" width="350" height="250"></td>
+
+      
+
+    
+     <td>
+
+     <a  class="btn btn-success" href=
+                        "productupdate.php?id=<?php echo $row['id']; ?>" 
+                            >
+                            Update
+                        </a>
+
+
+    </td>
+
+    <td>
+  
+   
+    <a class="btn btn-danger" href="productdelete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure?')"
+                            >
+                            Delete
+                        </a>
+
+
+</td>
+    </tr>
+    <?php
+}
+}
+        
+
+?>
+    
+  </tbody>
+  
+
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+
+    
+
+</table>
+
+
+
+
+
+ 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/dataTables.bootstrap5.min.js"></script>
+<script> 
+$(document).ready(function() {
+
+    $('#usertable').DataTable();
+
+});
+</script>
 </body>
 
-</html> 
+</html>
