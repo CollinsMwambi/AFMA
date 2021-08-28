@@ -18,6 +18,7 @@ session_start();
 	<link rel="stylesheet" href=
 "https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
+
 	<link rel="stylesheet" href="showp.css">
 </head>
 
@@ -28,9 +29,10 @@ session_start();
 		<div class="row">
 			<div class="col-lg-8">
 				<h1>Products</h1>
-				<a  href="addproducts.php">Add Item</a>
+				<a  href="addproducts.php" class="btn btn-outline-success">Add Products</a>
 			</div>
-			<div class="col-lg-4">
+            
+			<div class="col-lg-4"> <a  href="adminpage.php" class= "btn btn-outline-dark">Go back</a>
 				<div class="row">
 					<div class="col-lg-8">
 						
@@ -62,7 +64,7 @@ session_start();
 
 			<div class="col-lg-4">
 				<div class="card">
-                <img src="imageuploads/<?=$qq['filename']?>" width="200" height="200">
+                <img src="imageuploads/<?=$qq['filename']?>" width="350" height="250">
 					<div class="card-body">
                    
 						<h5 class="card-title">
@@ -78,14 +80,14 @@ session_start();
 						</h6>
 
 					<h8>	
-						<a href=
-						"productdelete.php?id=<?php echo $qq['id']; ?>"
+						<a class="btn btn-danger" href=
+						"productdelete.php?id=<?php echo $qq['id']; ?>" onclick="return confirm('Are you sure?')"
 							class="card-link">
 							Delete
 						</a>
-						<a href=
-						"productupdate.php?id=<?php echo $qq['id']; ?>"
-							class="card-link">
+						<a  class="btn btn-success" href=
+						"productupdate.php?id=<?php echo $qq['id']; ?>" 
+							class="card-link" >
 							Update
 						</a>
                 </h8>
@@ -97,6 +99,9 @@ session_start();
 			?>
 		</div>
 	</div>
+
+
+
 </body>
 
 </html> 

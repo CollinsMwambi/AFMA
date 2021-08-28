@@ -1,12 +1,7 @@
 <?php
-     include("db-con.php");
-     if(isset($_POST['delete_button']))
-     {
-
-     $id= $_GET['delete_id'];
-     $sql = "DELETE from users WHERE id = $id ";
-     mysqli_query($conn,$ql);  
-    header('location:adminpage.php');  
-     }
-
+    include("db-con.php");
+    $id = $_GET['id'];
+    $q = "delete from users where id = $id ";
+    mysqli_query($conn,$q);  
+    header('location:users.php');  
 ?>

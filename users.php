@@ -83,38 +83,22 @@ if(!isset($_SESSION["loggedin"]) ){
 
     </td>
 
-     
-     <td></form><button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Modal3">Delete</button></td>
-      </form>
+    <td>
+  
+   
+     <a class="btn btn-danger" href="deleteuser.php?id=<?php echo $row['id']; ?>"  onclick="return confirm('Are you sure?')">Delete</a>
+
+</td>
     </tr>
     <?php
 }
 }
         
-else{
-    echo"No record found";
-}
+
 ?>
     
   </tbody>
-  <div class="modal fade" id="Modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" >
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p> Are you sure you want to delete?</p>
-</div>
-      <div class="modal-footer">
-      <button type="submit" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-     
-      <form action="deleteuser.php" method="post">
-     
-    <input type="hidden" name='delete_id' value="<?php echo $row['id']; ?>">
-     <div class="d-grid gap-2"><button class="btn btn-danger" type="submit"  value="<?php echo $row['id']; ?>"name="delete_button" >Delete</button>
-</div></form>
+  
 
       </div>
     </div>

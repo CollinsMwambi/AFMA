@@ -65,7 +65,8 @@
       
 
             
-<button type="submit" name="addbutton" class="btn btn-primary">add</button>   
+<button type="submit" name="addbutton" class="btn btn-success">Add</button>  
+ <a href="products.php" class="btn btn-danger"> Cancel</a>
         
                 
     </div>

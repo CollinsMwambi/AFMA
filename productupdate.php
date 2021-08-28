@@ -29,7 +29,7 @@
   
     <link rel="stylesheet" href=
 "https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="showp.css">
 </head>
   
 <body>
@@ -75,8 +75,9 @@ value="<?php echo $res['price'];?>" />
   
             <div class="form-group">
                 <input type="submit" value="Update" 
-                    name="btn" class="btn btn-danger">
+                    name="btn" class="btn btn-success">
             </div>
+           <div> <a href="products.php" class="btn btn-danger">Cancel</a><div>
         </form>
     </div>
 </body>
