@@ -9,6 +9,8 @@ session_start();
          $username = $_POST['username'];
          $user_pwd =  $_POST['user_pwd'];
           $CPassword =  $_POST['CPassword'];
+          $code = rand(999999, 111111);
+          $status = "notverified";
 
       
 
@@ -36,7 +38,7 @@ session_start();
                         } else {
                              $hashed_pwd = password_hash($CPassword, PASSWORD_DEFAULT);
                            
-                             $sql = "INSERT INTO users(FName,LName,Email,username,password) VALUES('$FName','$LName','$Email','$username','$hashed_pwd')";
+                             $sql = "INSERT INTO users(FName,LName,Email,username,password,code,status) VALUES('$FName','$LName','$Email','$username','$hashed_pwd','$code','$status')";
                              if ($conn->query($sql) === TRUE) {
                                 header("Location: login.php?New_record_created_successfully");
                                

@@ -33,7 +33,7 @@ if(!isset($_SESSION["loggedin"]) ){
   </div>
 </nav>
 
-<button type="submit" class="btn btn-outline-success " name="Add user">ADD USER</button>
+<a href="addproducts.php" class="btn btn-outline-success ">Add Product</a>
 <table id="usertable" class="table table-dark table-borderless-responsive">
 
 

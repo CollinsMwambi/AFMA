@@ -13,7 +13,7 @@ $price =  $_POST['price'];
  $quantity = $_POST['quantity'];
  $filename = $_FILES["uploadfile"]["name"];
     $tempname = $_FILES["uploadfile"]["tmp_name"];    
-        $folder = "imageuploads/".$filename;//  $img =  $_POST['img'];
+        $folder = "imageuploads/".$filename;
  
  
 
