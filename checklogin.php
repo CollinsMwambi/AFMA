@@ -27,7 +27,7 @@
                              if ($hashed_pwd_check === false) {
                                 header("Location:login.php?login=wrong_pwd");
                                   
-                             } else if ($hashed_pwd_check === true && $row['usertype']=='user'  ) {  //log in the user
+                             } else if ($hashed_pwd_check === true && $row['usertype']=='user' && $row['status']=='verified' ) {  //log in the user
                                   $_SESSION["loggedin"] = true;
                                   $_SESSION["id"] = $id;
                                  $_SESSION['username'] = $row['username'];
@@ -37,7 +37,7 @@
                                     exit();
                              }
 
-                             else if($hashed_pwd_check===true && $row['usertype']=='admin'){
+                             else if($hashed_pwd_check===true && $row['usertype']=='admin'  && $row['status']=='verified'){
                                 $_SESSION['loggedin']= true;
                                 $_SESSION['id']= $id;
                                 $_SESSION['username']= $row['username'];

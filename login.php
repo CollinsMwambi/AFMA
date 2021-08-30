@@ -41,7 +41,7 @@ elseif(strpos($fullUrl,"login=wrong_email")==true){
     }
 
     elseif(strpos($fullUrl,"login=error")==true){
-      echo"<p style=background-color:orange;>Error logging in,Please try again!!<p>";
+      echo"<p style=background-color:orange;>Error logging in,Email is not verified<p>";
    
       }
 
