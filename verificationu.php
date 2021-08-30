@@ -21,8 +21,9 @@ session_start();
   <div class="alert alert-success d-flex align-items-center" role="alert">
   <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
   <div>
-  <p>  Verification link has been sent to your email, Verify your account to access our site.</p>
-    <a href="welcome.php" class="btn btn-dark" value= "Go back">Go to our homepage</a>
+   <p> Verification link has been sent to the new user.</p>
+
+    <a href="users.php" class="btn btn-dark" value= "Go back">Go back</a>
   </div>
 
     <!-- Optional JavaScript; choose one of the two! -->

@@ -1,9 +1,23 @@
 <?php
-
+include("db-con.php");
 session_start();
  if(!isset($_SESSION["loggedin"]) ){
     header("location:login.php");
-}
+
+
+
+  $productname=$_POST['productname'];
+  $q="select * from products where productname='$productname'";
+  $query=mysqli_query($conn,$q);
+ }
+else 
+{
+  $q= "select * from products";
+  $query=mysqli_query($conn,$q);
+}  
+       
+        
+
 ?>
  
 <!DOCTYPE html>
@@ -103,25 +117,7 @@ aria-labelledby="navbarDropdown">
     </div>
   </div>
 
-  <?php
-session_start();
-include("db-con.php");
-  
-if (isset($_POST['btns']))
-{
-  $productname=$_POST['productname'];
-  $q="select * from products where productname='$productname'";
-  $query=mysqli_query($conn,$q);
-} 
-else 
-{
-  $q= "select * from products";
-  $query=mysqli_query($conn,$q);
-}  
-       
-        
-?>
-
+ 
 
     <link rel="stylesheet" href=
 "https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -135,7 +131,7 @@ else
         <!-- top -->
         <div class="row">
             <div class="col-lg-8">
-                <h1>Products</h1>
+              
                 <!-- <a  href="addproducts.php" class="btn btn-outline-success">Add Products</a>
                 <a  href="adminpage.php" class= "btn btn-dark">Go back</a> -->
             </div>
@@ -171,6 +167,7 @@ else
             ?>
 
             <div class="col-lg-4">
+           
                 <div class="card">
                 <img src="imageuploads/<?=$qq['filename']?>" width="350" height="250">
                     <div class="card-body">
@@ -187,9 +184,10 @@ else
                             $qq['description']; ?>
                         </h6>
 
-                    <h8>    
-                        <a class="btn btn-dark" href=
-                        "checkout.php?id=<?php echo $qq['id']; ?>" onclick="return confirm('Are you sure?')"
+                    <h8> 
+                    
+                        <a class="btn btn-dark btn-block" href=
+                        "cart.php?id=<?php echo $qq['id']; ?>" onclick="return confirm('Are you sure?')"
                             class="card-link">
                             Add to cart
                         </a>

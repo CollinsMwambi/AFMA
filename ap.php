@@ -23,6 +23,10 @@ $price =  $_POST['price'];
              $sql = "INSERT INTO products(productname,description,price,quantity,filename) VALUES('$productname','$description','$price','$quantity','$filename')";
              if ($conn->query($sql) === TRUE) {
                 header("Location: products.php?New_record_created_successfully");
+
+                           
+                                 $_SESSION['pname'] = $qq['productname'];
+                                
                
               } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;

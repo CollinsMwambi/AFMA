@@ -10,7 +10,7 @@
         $q= "update products set productname='$productname', description='$description', 
         price='$price', quantity='$quantity' where id=$id";
         $query=mysqli_query($conn,$q);
-        header('location:products.php');
+        header('location:products.php?productupdate');
     } 
     else if(isset($_GET['id'])) 
     {

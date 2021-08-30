@@ -17,7 +17,7 @@
         if($query){
 
 
-            header('location:users.php?success');
+            header('location:users.php?successupdate');
         }
         else{
             header('location:users.php?error');

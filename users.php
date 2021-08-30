@@ -23,6 +23,7 @@ if(!isset($_SESSION["loggedin"]) ){
       
 </head>
 <body>
+  
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <div class="container-fluid">
     <a class="navbar-brand">AFMA users</a>
@@ -32,8 +33,20 @@ if(!isset($_SESSION["loggedin"]) ){
     </form>
   </div>
 </nav>
+<?php
+$fullUrl="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+if(strpos($fullUrl,"successupdate")==true){
+echo"<p style=background-color:green;>Update was successfull!!<p>";
 
-<button type="submit" class="btn btn-outline-success " name="Add user">ADD USER</button>
+}
+
+elseif(strpos($fullUrl,"userdelete")==true){
+  echo"<p style=background-color:green;>User has been deleted!!<p>";
+
+  }
+  ?>
+<form action="registeruser.php" method="post">
+<button type="submit" class="btn btn-outline-success " name="Adduser">ADD USER</button></form>
 <table id="usertable" class="table table-dark table-borderless-responsive">
 
 
@@ -46,6 +59,8 @@ if(!isset($_SESSION["loggedin"]) ){
       <th scope="col">Email</th>
       <th scope="col">Username</th>
       <th scope="col">Usertype</th>
+      <th scope="col">Verification</th>
+
       <th scope="col"></th>
       <th scope="col"></th>
      
@@ -76,6 +91,7 @@ if(!isset($_SESSION["loggedin"]) ){
       <td><?php echo $row['Email'] ?></td>
       <td><?php echo $row['username'] ?></td>
       <td><?php echo $row['usertype'] ?></td>
+      <td><?php echo $row['status'] ?></td>
 
       
 

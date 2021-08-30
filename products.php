@@ -19,7 +19,7 @@ if(!isset($_SESSION["loggedin"]) ){
         
    
    
-    <title>AFMA users</title>
+    <title>AFMA products</title>
       
 </head>
 <body>
@@ -27,12 +27,26 @@ if(!isset($_SESSION["loggedin"]) ){
   <div class="container-fluid">
     <a class="navbar-brand">AFMA Products</a>
     <form class="d-flex">
-      
+    
       <a href="adminpage.php" class="btn btn-dark ">Go back</a>
     </form>
   </div>
 </nav>
+<?php
+$fullUrl="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+if(strpos($fullUrl,"New_record_created_successfully")==true){
+echo"<p style=background-color:green;>Product added successfully!<p>";
 
+}
+
+elseif(strpos($fullUrl,"deleteduser")==true){
+  echo"<p style=background-color:red;>Product has been deleted successfully!<p>";
+
+  }
+  elseif(strpos($fullUrl,"productupdate")==true){
+    echo"<p style=background-color:green;>Product has been updated successfully!<p>";
+  
+    }?>
 <a href="addproducts.php" class="btn btn-outline-success ">Add Product</a>
 <table id="usertable" class="table table-dark table-borderless-responsive">
 
