@@ -45,8 +45,8 @@ session_start();
                              $datacheck = mysqli_query($conn, $sql);          
         if($datacheck){
             $receiver=$Email;
-            $subject = "Email Verification Code";
-            $message = "<a href ='http://localhost/AFMA/verify.php?code=$code'>Register your Account</a>";
+            $subject = "AFMA Email Verification Link";
+            $message = "<a href ='http://localhost/AFMA/verify.php?code=$code'>Register your Account by clicking this link</a>";
             $senders = "From: afma.a@yahoo.com \r\n";
             $senders .= "MIME-Version: 1.0" . "\r\n";
             $senders .= "Content-type:text/html;charset=UTF-8" . "\r\n";
