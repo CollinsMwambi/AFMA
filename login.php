@@ -49,6 +49,11 @@ elseif(strpos($fullUrl,"login=wrong_email")==true){
         echo"<p style=background-color:green;>Registration was successful, You can now log in<p>";
      
         }
+
+        elseif(strpos($fullUrl,"Your_account_has_been_verified_You_can_now_login")==true){
+          echo"<p style=background-color:green;>Account Verification was successful, You can now log in<p>";
+       
+          }
 ?>
   
   <div class="mb-3">
