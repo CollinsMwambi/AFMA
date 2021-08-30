@@ -10,6 +10,9 @@ session_start();
          $user_pwd =  $_POST['user_pwd'];
           $CPassword =  $_POST['CPassword'];
 
+          
+
+
       
 
             if (empty($FName) || empty($LName) || empty($Email) || empty($username) ||empty($user_pwd) || empty($CPassword)) {
@@ -35,17 +38,29 @@ session_start();
                                 exit();   
                         } else {
                              $hashed_pwd = password_hash($CPassword, PASSWORD_DEFAULT);
+                             $code =md5(time().$FName);
+                           $status="notverified";
                            
-                             $sql = "INSERT INTO users(FName,LName,Email,username,password) VALUES('$FName','$LName','$Email','$username','$hashed_pwd')";
-                             if ($conn->query($sql) === TRUE) {
-                                header("Location: login.php?New_record_created_successfully");
-                               
-                              } else {
-                                echo "Error: " . $sql . "<br>" . $conn->error;
-                              }
-                              
-                              $conn->close();
-                            }
-                        }
-                    }
+                             $sql = "INSERT INTO users(FName,LName,Email,username,password,code,status) VALUES('$FName','$LName','$Email','$username','$hashed_pwd','$code','$status')";
+                             $datacheck = mysqli_query($conn, $sql);          
+        if($datacheck){
+            $receiver=$Email;
+            $subject = "Email Verification Code";
+            $message = "<a href ='http://localhost/AFMA/verify.php?code=$code'>Register your Account</a>";
+            $senders = "From: afma.a@yahoo.com \r\n";
+            $senders .= "MIME-Version: 1.0" . "\r\n";
+            $senders .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        
+            
+
+            mail($receiver,$subject,$message,$senders);
+            header('location:verification.php');
+            
+            }else{
+              header("Location:registration.php?error signing in");
+            }
+        }
+    }
+
+}
                              ?>
