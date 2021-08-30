@@ -32,6 +32,9 @@
                                   $_SESSION["id"] = $id;
                                  $_SESSION['username'] = $row['username'];
                                  $_SESSION['email'] = $row['Email'];
+                                 $_SESSION['FName'] = $row['FName'];
+                                 $_SESSION['LName'] = $row['LName'];
+
 
                                     header("Location:welcomef.php?login=login_successful");
                                     exit();

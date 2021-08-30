@@ -182,23 +182,19 @@ else
                             <?php echo
                             $qq['price']; ?>
                         </h6>
-                        <h6 class="card-subtitle mb-2 text-muted">Quantity  =
+                        <h6 class="card-subtitle mb-2 text-muted">Description :
                             <?php echo
                             $qq['description']; ?>
                         </h6>
 
-                    <!-- <h8>    
-                        <a class="btn btn-danger" href=
-                        "productdelete.php?id=<?php echo $qq['id']; ?>" onclick="return confirm('Are you sure?')"
+                    <h8>    
+                        <a class="btn btn-dark" href=
+                        "checkout.php?id=<?php echo $qq['id']; ?>" onclick="return confirm('Are you sure?')"
                             class="card-link">
-                            Delete
+                            Add to cart
                         </a>
-                        <a  class="btn btn-success" href=
-                        "productupdate.php?id=<?php echo $qq['id']; ?>" 
-                            class="card-link" >
-                            Update
-                        </a>
-                </h8> -->
+                        
+                </h8> 
                     </div>
                 </div><br>
             </div>
