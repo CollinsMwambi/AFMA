@@ -1,33 +1,19 @@
 <?php
-include("db-con.php");
-session_start();
- if(!isset($_SESSION["loggedin"]) ){
-    header("location:login.php");
-
-
-
-  $productname=$_POST['productname'];
-  $q="select * from products where productname='$productname'";
-  $query=mysqli_query($conn,$q);
- }
-else 
-{
-  $q= "select * from products";
-  $query=mysqli_query($conn,$q);
-}  
-       
-        
-
+    session_start();
+    require_once('db-con.php');
+    if(!isset($_SESSION["loggedin"]) ){
+      header("location:login.php");
+    }
 ?>
- 
+
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
      <link rel="stylesheet" type="text/css" href="wc.css">
-    
-</head>
+   
+     </head>
 <body>
     <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
         <div class="container">
@@ -58,7 +44,7 @@ class="collapse navbar-collapse"
 id="navbarNav">
     <ul class="navbar-nav">
         <li class="nav-item active">
-          <a href="#" class="nav-link active"> 
+          <a href="cart.php" class="nav-link active"> 
           <img src="cart.svg">                   
                 Cart  
           </a> 
@@ -119,7 +105,7 @@ aria-labelledby="navbarDropdown">
 
  
 
-    <link rel="stylesheet" href=
+  <link rel="stylesheet" href=
 "https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="showpu.css">
@@ -128,169 +114,81 @@ aria-labelledby="navbarDropdown">
 <body>
     <div class="container mt-5">
         
-        <!-- top -->
+      
         <div class="row">
             <div class="col-lg-8">
-              
-                <!-- <a  href="addproducts.php" class="btn btn-outline-success">Add Products</a>
-                <a  href="adminpage.php" class= "btn btn-dark">Go back</a> -->
-            </div>
-           
-            <div class="col-lg-4"> 
+         </div>
+
+         <div class="col-lg-4"> 
                 <div class="row">
                     <div class="col-lg-8">
-                    
-                        <!--  Filtering-->
-                        <!-- <form method="post" action="">
-                            <input type="text" 
-                                class="form-control" 
-                                name="productname">
-                          
-                            <div class="col-lg-4" 
-                                method="post">
-                                <input type="submit" 
-                                class="btn btn-danger float-right" 
-                                name="btns" value="Search">
-                            </div>
-                        </form> -->
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- product Cards -->
+        
         <div class="row mt-4">
-            <?php
-            $result = mysqli_query($conn, "SELECT * FROM products");
-                while ($qq=$result->fetch_assoc())
-                {
-            ?>
+        <?php
+            $query = "SELECT * FROM products ORDER BY id ASC ";
+            $result = mysqli_query($conn,$query);
+            if(mysqli_num_rows($result) > 0) {
 
-            <div class="col-lg-4">
-           
-                <div class="card">
-                <img src="imageuploads/<?=$qq['filename']?>" width="350" height="250">
+                while ($row = mysqli_fetch_array($result)) 
+                {
+
+                    ?>
+
+                   <div class="col-lg-4">
+
+                  <div class="card">
+                  <img src="imageuploads/<?=$row['filename']?>" width="350" height="250">
                     <div class="card-body">
-                   
-                        <h5 class="card-title">
-                        <?php echo $qq['productname']; ?>
+
+                    <h5 class="card-title">
+                    <?php echo $row['productname']; ?>
                         </h5>
+
                         <h6 class="card-subtitle mb-2 text-muted">Price(ksh)=
                             <?php echo
-                            $qq['price']; ?>
-                        </h6>
-                        <h6 class="card-subtitle mb-2 text-muted">Description :
-                            <?php echo
-                            $qq['description']; ?>
-                        </h6>
-
-                    <h8> 
-                    
-                        <a class="btn btn-dark btn-block" href=
-                        "cart.php?id=<?php echo $qq['id']; ?>" onclick="return confirm('Are you sure?')"
-                            class="card-link">
-                            Add to cart
-                        </a>
+                            $row['price']; ?>
+                            </h6>
+                       
                         
-                </h8> 
-                    </div>
+                       
+
+                                
+                       
+              
+                                <h8>
+                                <form method="post" action="cart.php?action=add&id=<?php echo $row["id"]; ?>">
+
+                                <input type="text" name="quantity"  value="1"> 
+                            
+                               <input type="submit" name="addc" style="margin-top: 5px;" class="btn btn-success" onclick="return confirm('Are you sure?')"
+                               value="Add to Cart">
+
+                               <input type="hidden" name="hidden_name" value="<?php echo $row["productname"]; ?>">
+                              <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>">
+                              
+                                      
+                                </form>
+                               <h8>
+                 </div>
                 </div><br>
             </div>
-            <?php
+                    <?php
+                }
             }
-            ?>
+        ?>
         </div>
-    </div>
-
-
-</body>
-
-</html> 
-
-
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+          </div>
+          </body>
+          </html>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
  
 
 </body>
 
 
-
-<style>
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color:black;
-  color: white;
-  text-align: center;
-}
-</style>
-
-<!-- <div class="footer">
-
-
-
-  <div class="container text-center text-md-left">
-    <div class="row text-center text-md-left">
-      
-<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-  <h5 class="text-uppercase mb-4 font-weight-bold">AFMA</h5>
-  <p>
-    AFMA is an online drug store that enables consumers to purchase medicines.AFMA assures quality, convenience and privacy to the consumers.
-  </p>
-
-
-</div>
-<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-  <h5 class="text-uppercase mb-4 font-weight-bold">About us</h5>
-  <p>
-    <a href="" class="text-white" style="text-decoration:none; ">Who we are</a>
-  </p>
-
-  <p>
-    <a href="" class="text-white" style="text-decoration:none; ">Our quality statement</a>
-  </p>
-
-  
-</div>
-<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-  <h5 class="text-uppercase mb-4 font-weight-bold">Help Center</h5>
-<p>
-    <a href="" class="text-white" style="text-decoration:none; ">FAQs</a>
-  </p>
-
-  <p>
-    <a href="" class="text-white" style="text-decoration:none; ">Terms and Conditions</a>
-  </p>
-
-  <p>
-    <a href="" class="text-white" style="text-decoration:none; ">Shipping policy</a>
-  </p>
-
-  <p>
-    <a href="" class="text-white" style="text-decoration:none; ">Return policy</a>
-  </p>
-  <p>
-    <a href="" class="text-white" style="text-decoration:none; ">Privacy policy</a>
-  </p>
-</div>
-<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-  <h5 class="text-uppercase mb-4 font-weight-bold">Contact</h5>
-  <p>
-    <i class="fas fa-envelope mr-3 "></i>   afma@gmail.com
-  </p>
-  <p>
-    <i class="fas fa-phone mr-3 "></i>   0700000000
-  </p>
-  
-
-</div>
-
-    </div>
-  </div>
-
-</footer> -->
-
+       
 </html>

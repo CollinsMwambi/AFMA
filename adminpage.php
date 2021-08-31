@@ -1,5 +1,5 @@
 <?php
-
+require_once('db-con.php');
 session_start();
 if(!isset($_SESSION["loggedin"]) ){
   header("location:login.php");
@@ -43,7 +43,12 @@ aria-label="Toggle navigation"
             </li>
             
             <li class="nav-item">
-              <a href="adminprofile.php" class="nav-link "><i class="far fa-address-card" ></i> My profile</a>
+          
+              <a href="dashboard.php" class="nav-link "><i class="" ></i>Dashboard</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="adminprofile.php" class="nav-link" value=""><i class="far fa-address-card" ></i> My profile</a>
             </li>
             
             <li class="nav-item">
