@@ -156,17 +156,17 @@ session_start();
     
     <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Billing address</h4>
-        <form class="needs-validation" novalidate>
+        <form action="payments.php" method="post">
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="firstName" class="form-label">First name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="<?php echo($_SESSION["FName"]); ?>" required>
+              <input type="text" class="form-control" name="firstName" placeholder="" value="<?php echo($_SESSION["FName"]); ?>"required >
               
             </div>
 
             <div class="col-sm-6">
               <label for="lastName" class="form-label">Last name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="<?php echo($_SESSION["LName"]); ?>" required>
+              <input type="text" class="form-control" name="lastName" placeholder="" value="<?php echo($_SESSION["LName"]); ?>" required>
               <div class="invalid-feedback">
                 Valid last name is required.
               </div>
@@ -176,14 +176,14 @@ session_start();
               <label for="username" class="form-label">Username</label>
               <div class="input-group has-validation">
                
-                <input type="text" class="form-control" id="username" placeholder="Username"value="<?php echo($_SESSION["username"]); ?>" required>
+                <input type="text" class="form-control" name="username" placeholder="Username"value="<?php echo($_SESSION["username"]); ?>" required>
               
               </div>
             </div>
 
             <div class="col-12">
               <label for="email" class="form-label">Email </label>
-              <input type="email" class="form-control" id="email" value="<?php echo($_SESSION["email"]); ?>" required>
+              <input type="email" class="form-control" name="email" value="<?php echo($_SESSION["email"]); ?>" required>
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
               </div>
@@ -191,15 +191,20 @@ session_start();
 
             <div class="col-12">
               <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+              <input type="text" class="form-control" name="address" placeholder="1234 Main St" required>
               <div class="invalid-feedback">
                 Please enter your shipping address.
               </div>
             </div>
 
             <div class="col-12">
-              <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
-              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+              <label for="address2" class="form-label">Address 2 </label>
+              <input type="text" class="form-control" name="address2" placeholder="Apartment or suite"required>
+            </div>
+
+            <div class="col-12">
+              <label for="amount" class="form-label">Amount to be paid </label>
+              <input type="number" class="form-control" name="amount" value="<?php echo number_format($total, 2); ?>"required>
             </div>
 
 
@@ -213,11 +218,11 @@ session_start();
 
           <div class="row gy-3">
             <div class="col-md-6">
-              <label for="cc-name" class="form-label">Phone number</label>
-              <input type="text" class="form-control" id="cc-name" placeholder="" required>
+              <label for="phone" class="form-label">Phone number</label>
+              <input type="number" class="form-control" name="phone" required>
               <small class="text-muted">Enter phone number</small>
               <div class="invalid-feedback">
-                Name on card is required
+                Phone number required
               </div>
             </div>
 
@@ -226,7 +231,7 @@ session_start();
 
           <hr class="my-4">
 
-          <button class="w-100 btn btn-dark btn-lg" type="submit">Checkout</button>
+          <button class="w-100 btn btn-dark btn-lg" name=checkout type="submit">Checkout</button>
         </form>
       </div>
     </div>
