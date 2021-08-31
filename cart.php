@@ -99,6 +99,7 @@ session_start();
 
     <div class="row g-5">
       <div class="col-md-5 col-lg-4 order-md-last">
+      <a href="welcomef.php " class="btn btn-success">Continue Shopping</a>
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Your cart</span>
           
