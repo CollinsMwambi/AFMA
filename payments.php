@@ -3,22 +3,22 @@ session_start();
 require_once('db-con.php');
 if (isset($_POST['checkout'])) {
   
-    $fname =  $_POST['fisrtname'];
-    $lname =  $_POST['lastname'];
-     $username = $_POST['username'];
-     $email =  $_POST['email'];
-     $address =  $_POST['address'];
-      $address2 =  $_POST['address2'];
-      $amount =  $_POST['amount'];
-      $phone =  $_POST['phone'];
-
+     $fname =  $_POST['firstname'];
+     $lname =  $_POST['lastname'];
+      $username = $_POST['username'];
+      $email =  $_POST['email'];
+      $address =  $_POST['address'];
+       $address2 =  $_POST['address2'];
+       $amount =  $_POST['amount'];
+       $phone =  $_POST['phone'];
+/ 
 
 
     date_default_timezone_set('Africa/Nairobi');
   
     # access token
-    $consumerKey = 'SzxKBl3jvKYMm2Y7Wbqdi0rmySCanH7q'; //Fill with your app Consumer Key
-    $consumerSecret = 'aQTTgaKOTtQthW4X'; // Fill with your app Secret
+    $consumerKey = 'ZNjAFTQP33zkKeOxiWR0PuNV1SuWF3e6'; //Fill with your app Consumer Key
+    $consumerSecret = '1ZwMUmllxGtwAngy'; // Fill with your app Secret
   
     # define the variales
     # provide the following details, this part is found on your test credentials on the developer account
@@ -36,15 +36,15 @@ if (isset($_POST['checkout'])) {
     */
     
     $PartyA = ' $phone '; // This is your phone number, 
-    $AccountReference = '';
-    $TransactionDesc = '';
+    $AccountReference = '$email';
+    $TransactionDesc = 'AFMA PAYMENT';
     $Amount = ' $amount';
    
     # Get the timestamp, format YYYYmmddhms -> 20181004151020
     $Timestamp = date('YYYYMMDDHHmmss');    
     
     # Get the base64 encoded string -> $password. The passkey is the M-PESA Public Key
-    $Password = base64_encode(174379.bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919.$Timestamp);
+    $Password = base64_encode(174379.$Passkey..$Timestamp);
   
     # header for access token
     $headers = ['Content-Type:application/json; charset=utf8'];
@@ -54,7 +54,7 @@ if (isset($_POST['checkout'])) {
     $initiate_url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
   
     # callback url
-    $CallBackURL = 'http://codestar.co.ke/projects/MPESA_API/callback_url.php';  
+    $CallBackURL = 'https://localhost/payments.php';  
   
     $curl = curl_init($access_token_url);
     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
