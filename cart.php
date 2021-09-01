@@ -160,13 +160,13 @@ session_start();
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="firstName" class="form-label">First name</label>
-              <input type="text" class="form-control" name="firstName" placeholder="" value="<?php echo($_SESSION["FName"]); ?>"required >
+              <input type="text" class="form-control" name="FName" placeholder="" value="<?php echo($_SESSION["FName"]); ?>"required >
               
             </div>
 
             <div class="col-sm-6">
               <label for="lastName" class="form-label">Last name</label>
-              <input type="text" class="form-control" name="lastName" placeholder="" value="<?php echo($_SESSION["LName"]); ?>" required>
+              <input type="text" class="form-control" name="LName" placeholder="" value="<?php echo($_SESSION["LName"]); ?>" required>
               <div class="invalid-feedback">
                 Valid last name is required.
               </div>
@@ -199,7 +199,7 @@ session_start();
 
             <div class="col-12">
               <label for="address2" class="form-label">Address 2 </label>
-              <input type="text" class="form-control" name="address2" placeholder="Apartment or suite"required>
+              <input type="text" class="form-control" name="addressT" placeholder="Apartment or suite"required>
             </div>
 
             <div class="col-12">

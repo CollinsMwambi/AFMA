@@ -61,8 +61,7 @@ id="navbarNav">
           </a> 
 <ul class="dropdown-menu"
 aria-labelledby="navbarDropdown">
-   <li><a href="account_info.php" class="dropdown-item">Account information</a></li>
-   <li><a href="#" class="dropdown-item">Your Orders</a></li> 
+   <li><a href="account_info.php" class="dropdown-item">Account information</a></li> 
    <li><a href="#" class="dropdown-item">Help</a></li>
   
 
@@ -147,6 +146,11 @@ aria-labelledby="navbarDropdown">
                     <h5 class="card-title">
                     <?php echo $row['productname']; ?>
                         </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Description:
+                            <?php echo
+                            $row['description']; ?>
+                            </h6>
+
 
                         <h6 class="card-subtitle mb-2 text-muted">Price(ksh)=
                             <?php echo
@@ -164,7 +168,7 @@ aria-labelledby="navbarDropdown">
 
                                 <input type="text" name="quantity"  value="1"> 
                             
-                               <input type="submit" name="addc" style="margin-top: 5px;" class="btn btn-success" onclick="return confirm('Are you sure?')"
+                               <input type="submit" name="addc" style="margin-top: 5px;" class="btn btn-dark" onclick="return confirm('Are you sure?')"
                                value="Add to Cart">
 
                                <input type="hidden" name="hidden_name" value="<?php echo $row["productname"]; ?>">
@@ -189,6 +193,68 @@ aria-labelledby="navbarDropdown">
 
 </body>
 
+<style>
+.footer {
+ 
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:black;
+  color: white;
+  text-align: center;
+}
+</style>
 
+<div class="footer">
+  <div class="container text-center text-md-left">
+    <div class="row text-center text-md-left">
+      
+<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+  <h5 class="text-uppercase mb-4 font-weight-bold">AFMA</h5>
+  <p>
+    AFMA is an online drug store that enables consumers to purchase medicines.AFMA assures quality, convenience and privacy to the consumers.
+  </p>
+</div>
+<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+  <h5 class="text-uppercase mb-4 font-weight-bold">About us</h5>
+  <p>
+    <a href="" class="text-white" style="text-decoration:none; ">Who we are</a>
+  </p>
+  <p>
+    <a href="" class="text-white" style="text-decoration:none; ">Our quality statement</a>
+  </p>
+  
+</div>
+<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+  <h5 class="text-uppercase mb-4 font-weight-bold">Help Center</h5>
+<p>
+    <a href="" class="text-white" style="text-decoration:none; ">FAQs</a>
+  </p>
+  <p>
+    <a href="" class="text-white" style="text-decoration:none; ">Terms and Conditions</a>
+  </p>
+  <p>
+    <a href="" class="text-white" style="text-decoration:none; ">Shipping policy</a>
+  </p>
+  <p>
+    <a href="" class="text-white" style="text-decoration:none; ">Return policy</a>
+  </p>
+  <p>
+    <a href="" class="text-white" style="text-decoration:none; ">Privacy policy</a>
+  </p>
+</div>
+<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+  <h5 class="text-uppercase mb-4 font-weight-bold">Contact</h5>
+  <p>
+    <i class="fas fa-envelope mr-3 "></i>   afma@gmail.com
+  </p>
+  <p>
+    <i class="fas fa-phone mr-3 "></i>   0700000000
+  </p>
+  
+</div>
+    </div>
+  </div>
+</footer>
        
 </html>

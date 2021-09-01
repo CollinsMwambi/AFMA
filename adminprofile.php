@@ -1,11 +1,11 @@
 <?php
-require_once('db-con.php');
 session_start();
- if(!isset($_SESSION["loggedin"]) ){
-    header("location:login.php");
-}
-$id= $_GET['id'];
-$sql = "SELECT FName, LName,Email,username FROM users where id='$id '";
+include "db-con.php";
+
+$username = $_SESSION['username'];
+// echo"$username";
+
+$sql = "SELECT * FROM users where username='$username '";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -26,7 +26,7 @@ $conn->close();
 
     <title>My Profile</title>
   </head>
-  <body>
+  <body style=background-color:rgb(224,159,159);>
       
   <div class="container d-flex justify-content-center align-items-center"
 
@@ -34,7 +34,7 @@ style="min-height:100vh; "
 >
   
 <form class="border shadow p-3 rounded"
-action="checklogin.php"
+action=""
 method="post" 
 
 
@@ -45,16 +45,19 @@ while($row = $result->fetch_assoc()) {
     
 ?>
 
-<img src="" alt="" width="100" height="100">
   <div class="mb-3">
     <label for="First name"
      class="form-label">First Name</label>
     <input type="text"
      class="form-control"
     value="<?php echo$row["FName"]?>";
-     
+     name="FName"
      >
-     
+     <input type="hidden"
+     class="form-control"
+     value="<?php echo$row["id"]?>";
+
+     >
   
   </div>
   <div class="mb-3">
@@ -62,7 +65,7 @@ while($row = $result->fetch_assoc()) {
      class="form-label">Last Name</label>
     <input type="text"
      class="form-control"
-  
+     value="<?php echo$row["LName"]?>";
      >
      
     
@@ -74,7 +77,7 @@ while($row = $result->fetch_assoc()) {
      class="form-label">Email</label>
     <input type="email"
      class="form-control"
-     
+     value="<?php echo$row["Email"]?>";
      >
      
     
@@ -85,7 +88,7 @@ while($row = $result->fetch_assoc()) {
      class="form-label">username</label>
     <input type="text"
      class="form-control"
-    
+     value="<?php echo$row["username"]?>";
      >
      
     
@@ -97,10 +100,10 @@ while($row = $result->fetch_assoc()) {
 }
   ?>
   
-  <button type="submit" name="lsubmit" class="btn btn-primary">update profile</button>
-  
+  <!-- <button type="submit" name="upl" class="btn btn-outline-dark">update profile</button> -->
+  <a href="adminpage.php" class= "btn btn-dark">Go Back</a>
 <div>
-  
+ 
  
 </form>
 

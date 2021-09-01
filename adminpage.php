@@ -44,7 +44,7 @@ aria-label="Toggle navigation"
             
             <li class="nav-item">
           
-              <a href="dashboard.php" class="nav-link "><i class="" ></i>Dashboard</a>
+              <a href="#" class="nav-link "><i class="" ></i>Dashboard</a>
             </li>
 
             <li class="nav-item">
@@ -58,7 +58,7 @@ aria-label="Toggle navigation"
               <a href="products.php" class="nav-link"><i class="fas fa-prescription-bottle"></i> Products</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link"><i class="fas fa-shopping-basket"></i></i> Orders </a>
+              <a href="orders.php" class="nav-link"><i class="fas fa-shopping-basket"></i></i> Orders </a>
             </li>
            
 

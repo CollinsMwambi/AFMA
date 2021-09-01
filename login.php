@@ -54,6 +54,19 @@ elseif(strpos($fullUrl,"login=wrong_email")==true){
           echo"<p style=background-color:green;>Account Verification was successful, You can now log in<p>";
        
           }
+
+          elseif(strpos($fullUrl,"sreset")==true){
+            echo"<p style=background-color:green;You can now login with your new password<p>";
+         
+            }
+?>
+<?php
+$fullUrl="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+if(strpos($fullUrl,"sreset")==true){
+echo"<p style=background-color:green;>You can now log in with your new password<p>";
+
+}
+
 ?>
   
   <div class="mb-3">
@@ -83,7 +96,7 @@ elseif(strpos($fullUrl,"login=wrong_email")==true){
   <button type="submit" name="lsubmit" class="btn btn-primary">Login</button>
   <a href="Registration.php" style="text-decoration:none; ">  New here? Sign up</a>
 <div>
-  <a href="reset-password.php" style="text-decoration:none;">  forgot password?</a></div>
+  <a href="reset.php" style="text-decoration:none;">  forgot password?</a></div>
  
 </form>
 
